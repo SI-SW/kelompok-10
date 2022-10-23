@@ -27,12 +27,6 @@ const dashboard = {
         meta: {auth: true},
     },
     {
-        path: 'todo/:id',
-        name: 'ToDoEdit',
-        component: () => import('@/views/Dashboard/ToDoEdit.vue'),
-        meta: {auth: true},
-    },
-    {
         path: 'addtodo',
         name: 'AddToDo',
         component: () => import('@/views/Dashboard/AddToDo.vue'),
