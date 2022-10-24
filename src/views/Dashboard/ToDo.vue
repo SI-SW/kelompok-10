@@ -12,7 +12,7 @@ export default {
         ...mapState(d$todo, ['g$list']),
     },
     methods: {
-        ...mapActions(d$todo, ["a$list"]),
+        ...mapActions(d$todo, ["a$list","a$del"]),
         async getList(){
             try {
                 await this.a$list();
@@ -20,6 +20,14 @@ export default {
                 console.error('methods getList error', e);
             }
         },
+        async deleteList(id){
+            try {
+                await this.a$del(id);
+                this.getList();
+            } catch (e) {
+                console.error('methods deleteList error', e);
+            }
+        }
     },
     async created(){
         await this.getList();
@@ -68,6 +76,14 @@ export default {
                 <router-link>
                   <a class="text-secondary font-weight-bold text-xs">Edit</a>
                 </router-link>
+                </td>
+                <td class="align-middle">
+                    <form @submit.prevent="deleteList(item.id)">
+                        <argon-button
+                        variant="gradient"
+                        type="submit"
+                      >Delete</argon-button>
+                    </form>
                 </td>
               </tr>
             </tbody>
