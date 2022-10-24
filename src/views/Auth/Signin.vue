@@ -22,7 +22,7 @@
                   <p class="mb-0">Enter your email and password to sign in</p>
                 </div>
                 <div class="card-body">
-                  <form @submit.prevent="submitLogin">
+                  <form>
                     <div class="mb-3">
                       <argon-input v-model="input.username" type="email" placeholder="Email" name="email" size="lg" />
                     </div>
@@ -95,23 +95,6 @@ export default {
     ArgonInput,
     ArgonSwitch,
     ArgonButton,
-  },
-  data: () => ({
-    input:{
-      username: '',
-      password: '',
-    }
-  }),
-  methods: {
-    ...mapActions(d$auth, ['a$login']),
-    async submitLogin(){
-      try {
-        await this.a$login({ ...this.input });
-        this.$router.replace({ name: 'Default'});
-      } catch (e) {
-        console.error(e);
-      }
-    }
   },
   created() {
     this.$store.state.hideConfigButton = true;
