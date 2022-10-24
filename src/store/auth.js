@@ -34,14 +34,6 @@ const d$auth = defineStore({
                 throw message ?? error;
             }
         },
-        async a$register(body){
-            try {
-                await s$auth.register(body);
-            } catch (e) {
-                console.error('actions register error', e);
-                throw e;
-            }
-        },
         async a$logout() {
             try {
               delCookies('CERT');
