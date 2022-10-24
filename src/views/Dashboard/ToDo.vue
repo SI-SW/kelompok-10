@@ -21,17 +21,14 @@ export default {
             }
         },
         async deleteList(id){
-            try {
-                await this.a$del(id);
-                window.location.reload();
-            } catch (e) {
-                console.error('methods deleteList error', e);
-            }
+          try {
+              await this.a$del(id);
+              this.getList();
+          } catch (e) {
+              console.error('methods deleteList error', e);
+          }
         }
-    },
-    async created(){
-        await this.getList();
-    },
+    }, 
 };
 </script>
 
@@ -73,7 +70,7 @@ export default {
                   <span class="text-secondary text-xs font-weight-bold">{{item.description}}</span>
                 </td>
                 <td class="align-middle">
-                <router-link :to="{name: 'ToDoEdit', params: {id: item.id}}">
+                <router-link>
                   <a class="text-secondary font-weight-bold text-xs">Edit</a>
                 </router-link>
                 </td>
