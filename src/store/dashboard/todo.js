@@ -16,15 +16,6 @@ const d$todo = defineStore({
                 throw e;
             }
         },
-        async a$detail(id) {
-            try {
-                const { data } = await s$todo.detail(id);
-                this.list = data;
-            } catch (e) {
-                console.error('actions todo list error', e);
-                throw e;
-            }
-        },
         async a$add(body) {
             try {
                 await s$todo.add(body);
@@ -52,7 +43,6 @@ const d$todo = defineStore({
     },
     getters: {
         g$list: ({ list }) => list,
-        g$detail: ({ list }) => list,
     },
 });
 

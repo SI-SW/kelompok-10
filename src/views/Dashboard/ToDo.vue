@@ -73,7 +73,7 @@ export default {
                   <span class="text-secondary text-xs font-weight-bold">{{item.description}}</span>
                 </td>
                 <td class="align-middle">
-                <router-link>
+                  <router-link :to="{name: 'ToDoEdit', params: {id: item.id}}">
                   <a class="text-secondary font-weight-bold text-xs">Edit</a>
                 </router-link>
                 </td>
