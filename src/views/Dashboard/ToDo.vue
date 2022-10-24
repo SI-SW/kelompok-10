@@ -1,6 +1,6 @@
 <script>
 import { mapActions, mapState } from 'pinia';
-import d$todo from '@/stores/dashboard/todo';
+import d$todo from '@/store/dashboard/todo';
 import ArgonButton from "@/components/ArgonButton.vue";
 
 export default {

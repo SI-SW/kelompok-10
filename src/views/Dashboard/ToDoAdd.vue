@@ -1,5 +1,5 @@
 <script>
-import { mapActions, mapState } from 'pinia';
+import { mapActions } from 'pinia';
 
 import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonSwitch from "@/components/ArgonSwitch.vue";

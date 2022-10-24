@@ -44,10 +44,10 @@
           url="/dashboard/todo"
           :class="getRoute() === 'profile' ? 'active' : ''"
           :navText="
-            this.$store.state.isRTL ? 'الواقع الافتراضي' : 'todo'"
+            this.$store.state.isRTL ? 'الواقع الافتراضي' : 'ToDo'"
         >
           <template v-slot:icon>
-            <i class="ni ni-app text-info text-sm opacity-10"></i>
+            <i class="ni ni-check-bold text-dark text-sm opacity-10"></i>
           </template>
         </sidenav-item>
       </li>
@@ -105,11 +105,11 @@
         <sidenav-item
           url="/auth/signup"
           :class="getRoute() === 'signup' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'اشتراك' : 'logout'"
+          :navText="this.$store.state.isRTL ? 'اشتراك' : 'LogOut'"
           @click="logout"
         >
           <template v-slot:icon>
-            <i class="ni ni-collection text-info text-sm opacity-10"></i>
+            <i class="ni ni-button-power text-danger text-sm opacity-10"></i>
           </template>
         </sidenav-item>
       </li>

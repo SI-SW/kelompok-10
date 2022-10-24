@@ -28,8 +28,8 @@ const dashboard = {
     },
     {
         path: 'addtodo',
-        name: 'AddToDo',
-        component: () => import('@/views/Dashboard/AddToDo.vue'),
+        name: 'ToDoAdd',
+        component: () => import('@/views/Dashboard/ToDoAdd.vue'),
         meta: {auth: true},
     },
     {
