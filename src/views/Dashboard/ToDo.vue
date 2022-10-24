@@ -28,6 +28,9 @@ export default {
               console.error('methods deleteList error', e);
           }
         }
+    },
+    async created(){
+        await this.getList();
     }, 
 };
 </script>
