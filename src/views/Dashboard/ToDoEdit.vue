@@ -67,7 +67,7 @@
 </template>
 
 <script>
-    import { mapActions, mapState } from 'pinia';
+    import { mapActions } from 'pinia';
 
 import d$todo from '@/store/dashboard/todo';
 
@@ -90,9 +90,6 @@ export default {
         ArgonSwitch,
         ArgonButton,
     },
-    computed: {
-        ...mapState(d$todo, ['g$detail']),
-    },
     methods: {
         ...mapActions(d$todo, ["a$edit"]),
         async editList() {
@@ -106,9 +103,6 @@ export default {
                 console.error('methods editList error', e);
             }
         },
-    },
-    async created() {
-        await this.getListDetail();
     },
 };
 </script>
