@@ -19,33 +19,16 @@ export default {
         ArgonSwitch,
         ArgonButton,
     },
-    computed: {
-        ...mapState(d$todo, ['g$detail']),
-    },
     methods: {
         ...mapActions(d$todo, ["a$add"]),
-        async getListDetail() {
-            try {
-                const id = this.$route.params.id;
-
-                await this.a$detail(id);
-            } catch (e) {
-                console.error('methods getDetail error', e);
-            }
-        },
         async addList() {
             try {
-                const id = this.$route.params.id;
-
                 await this.a$add({...this.input });
                 this.$router.push('todo');
             } catch (e) {
                 console.error('methods editList error', e);
             }
         },
-    },
-    async created() {
-        await this.getListDetail();
     },
 };
 </script>
