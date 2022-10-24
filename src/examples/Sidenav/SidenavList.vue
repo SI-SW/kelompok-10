@@ -127,7 +127,7 @@
 import SidenavItem from "./SidenavItem.vue";
 import SidenavCard from "./SidenavCard.vue";
 import { mapActions } from "pinia";
-import d$auth from "@/stores/auth";
+import d$auth from "@/store/auth";
 
 export default {
   name: "SidenavList",
