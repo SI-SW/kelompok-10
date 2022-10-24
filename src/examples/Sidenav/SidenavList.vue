@@ -44,7 +44,7 @@
           url="/dashboard/todo"
           :class="getRoute() === 'profile' ? 'active' : ''"
           :navText="
-            this.$store.state.isRTL ? 'الواقع الافتراضي' : 'Virtual Reality'"
+            this.$store.state.isRTL ? 'الواقع الافتراضي' : 'todo'"
         >
           <template v-slot:icon>
             <i class="ni ni-app text-info text-sm opacity-10"></i>
@@ -94,6 +94,18 @@
           url="/auth/signup"
           :class="getRoute() === 'signup' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'اشتراك' : 'Sign Up'"
+    
+        >
+          <template v-slot:icon>
+            <i class="ni ni-collection text-info text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item">
+        <sidenav-item
+          url="/auth/signup"
+          :class="getRoute() === 'signup' ? 'active' : ''"
+          :navText="this.$store.state.isRTL ? 'اشتراك' : 'logout'"
           @click="logout"
         >
           <template v-slot:icon>
