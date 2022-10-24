@@ -6,7 +6,7 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <sidenav-item
-          url="/dashboard-default"
+          url="/dashboard"
           :class="getRoute() === 'dashboard-default' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'لوحة القيادة' : 'Dashboard'"
         >
@@ -17,7 +17,7 @@
       </li>
       <li class="nav-item">
         <sidenav-item
-          url="/tables"
+          url="/dashboard/tables"
           :class="getRoute() === 'tables' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'الجداول' : 'Tables'"
         >
@@ -30,7 +30,7 @@
       </li>
       <li class="nav-item">
         <sidenav-item
-          url="/billing"
+          url="/dashboard/billing"
           :class="getRoute() === 'billing' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'الفواتیر' : 'Billing'"
         >
@@ -41,25 +41,13 @@
       </li>
       <li class="nav-item">
         <sidenav-item
-          url="/virtual-reality"
-          :class="getRoute() === 'virtual-reality' ? 'active' : ''"
+          url="/dashboard/todo"
+          :class="getRoute() === 'profile' ? 'active' : ''"
           :navText="
-            this.$store.state.isRTL ? 'الواقع الافتراضي' : 'Virtual Reality'
-          "
+            this.$store.state.isRTL ? 'الواقع الافتراضي' : 'Virtual Reality'"
         >
           <template v-slot:icon>
             <i class="ni ni-app text-info text-sm opacity-10"></i>
-          </template>
-        </sidenav-item>
-      </li>
-      <li class="nav-item">
-        <sidenav-item
-          url="/rtl-page"
-          :class="getRoute() === 'rtl-page' ? 'active' : ''"
-          navText="RTL"
-        >
-          <template v-slot:icon>
-            <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
           </template>
         </sidenav-item>
       </li>
@@ -81,7 +69,7 @@
       </li>
       <li class="nav-item">
         <sidenav-item
-          url="/profile"
+          url="/dashboard/profile"
           :class="getRoute() === 'profile' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'حساب تعريفي' : 'Profile'"
         >
@@ -92,7 +80,7 @@
       </li>
       <li class="nav-item">
         <sidenav-item
-          url="/signin"
+          url="/auth/signin"
           :class="getRoute() === 'signin' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'تسجيل الدخول' : 'Sign In'"
         >
@@ -103,9 +91,10 @@
       </li>
       <li class="nav-item">
         <sidenav-item
-          url="/signup"
+          url="/auth/signup"
           :class="getRoute() === 'signup' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'اشتراك' : 'Sign Up'"
+          @click="logout"
         >
           <template v-slot:icon>
             <i class="ni ni-collection text-info text-sm opacity-10"></i>
@@ -125,6 +114,8 @@
 <script>
 import SidenavItem from "./SidenavItem.vue";
 import SidenavCard from "./SidenavCard.vue";
+import { mapActions } from "pinia";
+import d$auth from "@/stores/auth";
 
 export default {
   name: "SidenavList",
@@ -146,7 +137,16 @@ export default {
     getRoute() {
       const routeArr = this.$route.path.split("/");
       return routeArr[1];
-    }
+    },
+    ...mapActions(d$auth, ["a$logout"]),
+    logout() {
+      try {
+        this.a$logout();
+        this.$router.replace({ name: "Signin" });
+      } catch (e) {
+        console.log(e);
+      }
+    },
   }
 };
 </script>
