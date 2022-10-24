@@ -23,7 +23,7 @@ export default {
         async deleteList(id){
             try {
                 await this.a$del(id);
-                this.getList();
+                window.location.reload();
             } catch (e) {
                 console.error('methods deleteList error', e);
             }
